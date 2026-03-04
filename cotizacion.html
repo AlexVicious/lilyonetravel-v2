@@ -1,1 +1,345 @@
-{"detail":"Not found."}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cotiza tu Viaje | Lily One Travel</title>
+
+<style>
+
+/* BASE */
+
+body{
+font-family:Arial;
+background:linear-gradient(180deg,#fff8ef,#eef3ff);
+display:flex;
+justify-content:center;
+padding:40px;
+overflow-x:hidden;
+}
+
+/* ESTRELLAS */
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background-image:radial-gradient(white 1px, transparent 1px);
+background-size:40px 40px;
+opacity:.6;
+animation:stars 60s linear infinite;
+z-index:-1;
+}
+
+@keyframes stars{
+from{transform:translateY(0)}
+to{transform:translateY(-250px)}
+}
+
+/* FORM */
+
+.form-container{
+background:white;
+padding:45px;
+border-radius:20px;
+width:700px;
+max-width:95%;
+box-shadow:0 20px 60px rgba(0,0,0,0.1);
+animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* CABECERA */
+
+.header-text{
+text-align:center;
+margin-bottom:25px;
+}
+
+.header-text h1{
+font-size:30px;
+margin-bottom:15px;
+}
+
+.header-text p{
+font-size:16px;
+color:#555;
+line-height:1.5;
+}
+
+/* CAMPOS */
+
+input,textarea{
+width:100%;
+padding:13px;
+margin-bottom:15px;
+border-radius:10px;
+border:1px solid #ddd;
+transition:.3s;
+font-size:14px;
+}
+
+textarea{
+min-height:150px;
+}
+
+input:focus,textarea:focus{
+border-color:#F08F00;
+box-shadow:0 0 12px rgba(240,143,0,0.4);
+outline:none;
+}
+
+/* DESTINOS */
+
+.destinations{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-bottom:20px;
+}
+
+.dest{
+border-radius:14px;
+padding:20px;
+text-align:center;
+font-size:16px;
+cursor:pointer;
+background:linear-gradient(180deg,#fff,#f7f7f7);
+border:1px solid #eee;
+transition:.3s;
+}
+
+.dest:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.dest.selected{
+background:#F08F00;
+color:white;
+box-shadow:0 10px 25px rgba(240,143,0,.5);
+}
+
+/* PERSONAS */
+
+.people{
+display:flex;
+gap:10px;
+}
+
+/* FECHAS */
+
+.dates{
+display:flex;
+gap:10px;
+}
+
+/* BOTON */
+
+button{
+padding:17px;
+background:#F08F00;
+border:none;
+border-radius:40px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+width:100%;
+font-size:17px;
+position:relative;
+overflow:hidden;
+}
+
+button::after{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,.7),
+transparent
+);
+transition:.6s;
+}
+
+button:hover::after{
+left:100%;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 15px 35px rgba(240,143,0,.5);
+}
+
+.info{
+font-size:14px;
+color:#444;
+margin-bottom:10px;
+}
+
+/* IMPORTANTE */
+
+.importante{
+margin-top:35px;
+padding:20px;
+background:#fff4e4;
+border-radius:14px;
+font-size:14px;
+line-height:1.6;
+}
+
+.importante strong{
+color:#F08F00;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="form-container">
+
+<div class="header-text">
+
+<h1>✨ Tu viaje de ensueño ✨</h1>
+
+<p>
+Hola, soy <strong>Lily Solorzano</strong>, tu agente de viajes personalizado.  
+Juntos crearemos tu viaje de ensueño, sin complicaciones ni preocupaciones.  
+Déjame ayudarte a que disfrutes al máximo.
+</p>
+
+<p>
+<strong>Mi servicio es GRATIS para ti.</strong>  
+Llena este formulario para recibir tu cotización personalizada.
+</p>
+
+</div>
+
+<form action="https://formsubmit.co/lilysolorzano@lilyonetravel.com" method="POST">
+
+<input required name="Nombre" placeholder="Nombre">
+
+<input required type="email" name="Correo" placeholder="Correo">
+
+<input required name="Ciudad" placeholder="Ciudad">
+
+<input required name="Telefono" placeholder="Teléfono">
+
+<div class="info">Selecciona tu destino:</div>
+
+<div class="destinations">
+
+<div class="dest" data-value="Disney">🏰 Disney</div>
+<div class="dest" data-value="Universal">🎢 Universal</div>
+<div class="dest" data-value="Cruceros">🚢 Cruceros</div>
+<div class="dest" data-value="Playa">🏝️ Playa</div>
+
+</div>
+
+<input type="hidden" name="Destino" id="destino">
+
+<div class="people">
+
+<input type="number" name="Adultos" min="1" value="1" placeholder="Adultos">
+
+<input type="number" name="Niños" min="0" value="0" placeholder="Niños">
+
+</div>
+
+<div class="dates">
+
+<input required type="date" name="Fecha inicio" id="fechaInicio">
+
+<input required type="date" name="Fecha fin" id="fechaFin">
+
+</div>
+
+<div class="info">
+
+¡Gracias por tu interés! ✈️🌎  
+Comparte detalles del viaje para diseñar la mejor experiencia.
+
+</div>
+
+<textarea name="Comentarios"
+placeholder="Ejemplo: viaje familiar, edades de los niños, celebración especial, presupuesto aproximado, etc."></textarea>
+
+<input type="hidden" name="_subject" value="Nueva solicitud Lily One Travel ✨">
+
+<input type="hidden" name="_next" value="https://lilyonetravel.com/gracias.html">
+
+<button type="submit">
+Crear mi viaje mágico ✨
+</button>
+
+</form>
+
+<div class="importante">
+
+<strong>📌 IMPORTANTE</strong><br><br>
+
+Obtén tu <strong>cotización en un lapso máximo de 72 horas.</strong><br><br>
+
+Si no tienes respuesta escribe a:<br>
+<strong>lilysolorzano@lilyonetravel.com</strong><br><br>
+
+Los precios son <strong>OFICIALES.</strong><br><br>
+
+Mi asesoría y acompañamiento <strong>NO tiene costo para ti.</strong><br><br>
+
+Los <strong>vuelos son por tu cuenta.</strong><br><br>
+
+Indispensable <strong>Visa y Pasaporte vigentes</strong> para viajes a EE.UU.<br><br>
+
+Opciones de <strong>apartado y pagos diferidos disponibles.</strong>
+
+</div>
+
+</div>
+
+<script>
+
+/* seleccionar destino */
+
+const dests=document.querySelectorAll(".dest")
+const input=document.getElementById("destino")
+
+dests.forEach(d=>{
+
+d.addEventListener("click",()=>{
+
+dests.forEach(x=>x.classList.remove("selected"))
+
+d.classList.add("selected")
+
+input.value=d.dataset.value
+
+})
+
+})
+
+/* limitar fechas */
+
+const hoy=new Date().toISOString().split("T")[0]
+
+document.getElementById("fechaInicio").setAttribute("min",hoy)
+document.getElementById("fechaFin").setAttribute("min",hoy)
+
+</script>
+
+</body>
+</html>

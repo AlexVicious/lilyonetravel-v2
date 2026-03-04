@@ -1,1 +1,270 @@
-{"detail":"Not found."}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<meta http-equiv="Content-Security-Policy" content="
+default-src 'self';
+img-src 'self' data: https:;
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+font-src https://fonts.gstatic.com;
+script-src 'self' 'unsafe-inline';
+connect-src 'self';
+base-uri 'self';
+form-action 'self';
+frame-ancestors 'none';
+upgrade-insecure-requests;
+">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lily One Travel | Vive la Magia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Fredoka:wght@400;600&family=Uncial+Antiqua&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
+<style>
+
+/* -------- SOCIAL ICON MAGIC -------- */
+
+.social-nav{
+display:flex;
+gap:16px;
+align-items:center;
+}
+
+.social-btn{
+
+width:42px;
+height:42px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:50%;
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(6px);
+
+transition:all .35s ease;
+
+animation:floatIcon 6s ease-in-out infinite;
+
+}
+
+.social-icon{
+width:22px;
+height:22px;
+fill:white;
+transition:all .35s ease;
+}
+
+.social-btn:hover{
+
+transform:translateY(-4px) scale(1.12);
+
+background:rgba(255,255,255,0.18);
+
+box-shadow:
+0 0 12px rgba(255,180,255,.6),
+0 0 25px rgba(255,220,150,.4),
+0 0 40px rgba(255,150,255,.2);
+
+}
+
+.social-btn:hover .social-icon{
+
+fill:#ffd9ff;
+
+}
+
+/* floating magic */
+
+@keyframes floatIcon{
+
+0%{transform:translateY(0px)}
+50%{transform:translateY(-3px)}
+100%{transform:translateY(0px)}
+
+}
+
+/* navbar elegance */
+
+.navbar{
+
+background:linear-gradient(
+90deg,
+rgba(12,10,40,.85),
+rgba(35,15,60,.85)
+);
+
+backdrop-filter:blur(10px);
+
+box-shadow:0 4px 25px rgba(0,0,0,.35);
+
+}
+
+/* logo animation */
+
+.logo{
+
+transition:transform .5s ease;
+
+}
+
+.brand:hover .logo{
+
+transform:rotate(-4deg) scale(1.05);
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="magicParticles"></canvas>
+
+<div id="pageTransition"></div>
+
+<header class="navbar">
+
+<a class="brand" href="mailto:lilysolorzano@lilyonetravel.com">
+<img src="logo.png" class="logo">
+<span class="brand-hint">Contáctanos</span>
+</a>
+
+<nav class="social-nav">
+
+<a class="social-btn" href="https://www.tiktok.com/@lilyonetravele" target="_blank">
+
+<svg class="social-icon" viewBox="0 0 24 24">
+<path d="M16.6 3c.4 2.7 2.1 4.3 4.4 4.6v3.1c-1.7.1-3.3-.4-4.6-1.4v6.2c0 4.2-3.4 7.5-7.5 7.5S1.4 19.7 1.4 15.5c0-4.3 3.5-7.6 7.8-7.5v3.2c-2.4-.1-4.4 1.8-4.6 4.2-.2 2.6 1.9 4.8 4.5 4.8 2.4 0 4.4-2 4.4-4.4V3h3.1z"/>
+</svg>
+
+</a>
+
+<a class="social-btn" href="https://www.instagram.com/lilyonetravele" target="_blank">
+
+<svg class="social-icon" viewBox="0 0 24 24">
+<path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 
+0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 
+2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 
+3H7c-1.7 0-3-1.3-3-3V7c0-1.7 
+1.3-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 
+13 5.5 5.5 0 0 0 12 7.5zm0 
+2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 
+12 9.5zm4.8-3.3a1.3 1.3 0 1 0 
+1.3 1.3 1.3 1.3 0 0 0-1.3-1.3z"/>
+</svg>
+
+</a>
+
+<a class="social-btn" href="https://facebook.com" target="_blank">
+
+<svg class="social-icon" viewBox="0 0 24 24">
+<path d="M22 12a10 10 0 1 0-11.6 
+9.9v-7H7.9V12h2.5V9.8c0-2.5 
+1.5-3.8 3.7-3.8 1.1 0 
+2.2.2 2.2.2v2.4h-1.3c-1.3 
+0-1.7.8-1.7 1.6V12h2.9l-.5 
+2.9h-2.4v7A10 10 0 0 0 22 12z"/>
+</svg>
+
+</a>
+
+</nav>
+
+<div class="nav-cta">
+<button class="btn-primary nav-link" data-link="cotizacion.html">
+Cotiza tu viaje
+</button>
+</div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<h1 class="main-title">Lily One Travel</h1>
+
+<p class="subtitle">✨ Your Dream is yet to come ✨</p>
+
+<div class="video-stage">
+<div class="video-frame">
+
+<video class="hero-video"
+src="LilyComercial.m4v"
+autoplay muted loop playsinline></video>
+
+</div>
+</div>
+
+<div class="cta-row">
+
+<a class="btn-agentes"
+href="https://wa.me/525568817319"
+target="_blank">
+
+Únete a mi equipo de agentes
+
+</a>
+
+</div>
+
+</section>
+
+<section class="destinations">
+
+<h2 class="magic-title">
+✨ La magia comienza aquí ✨
+</h2>
+
+<div class="grid">
+
+<button class="card disney nav-link" data-link="cotizacion.html">
+Disneyland
+</button>
+
+<button class="card universal nav-link" data-link="cotizacion.html">
+Universal
+</button>
+
+<button class="card cruceros nav-link" data-link="cotizacion.html">
+Cruceros
+</button>
+
+<button class="card playa nav-link" data-link="cotizacion.html">
+Playa
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+<a class="whatsapp-float"
+href="https://wa.me/525568817319"
+target="_blank">
+
+💬 WhatsApp
+
+</a>
+
+<footer>
+© 2026 Lily One Travel
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
