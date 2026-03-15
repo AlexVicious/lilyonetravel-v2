@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Firma Lily One Travel</title>
+
+<style>
+
+body{
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:220px;
+background:transparent;
+}
+
+/* contenedor */
+
+.firma{
+position:relative;
+width:420px;
+}
+
+/* imagen */
+
+.firma img{
+width:100%;
+display:block;
+}
+
+/* brillo contorno */
+
+.glow{
+
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+animation: glowTravel 6s linear infinite;
+
+}
+
+@keyframes glowTravel{
+
+0%{
+filter:
+drop-shadow(0 0 2px rgba(255,215,150,0.3));
+}
+
+25%{
+filter:
+drop-shadow(0 0 10px rgba(255,215,150,0.9))
+drop-shadow(0 0 18px rgba(255,215,150,0.7));
+}
+
+50%{
+filter:
+drop-shadow(0 0 5px rgba(255,215,150,0.4));
+}
+
+75%{
+filter:
+drop-shadow(0 0 12px rgba(255,215,150,0.9))
+drop-shadow(0 0 25px rgba(255,215,150,0.8));
+}
+
+100%{
+filter:
+drop-shadow(0 0 2px rgba(255,215,150,0.3));
+}
+
+}
+
+/* partículas mágicas */
+
+.particle{
+
+position:absolute;
+
+width:6px;
+height:6px;
+
+background:white;
+
+border-radius:50%;
+
+box-shadow:
+0 0 6px white,
+0 0 12px gold,
+0 0 18px gold;
+
+animation: floatMagic 5s infinite ease-in-out;
+
+}
+
+/* posiciones alrededor del sombrero */
+
+.p1{left:120px; top:10px;}
+.p2{left:160px; top:30px; animation-delay:1s;}
+.p3{left:200px; top:15px; animation-delay:2s;}
+.p4{left:180px; top:50px; animation-delay:3s;}
+.p5{left:140px; top:55px; animation-delay:4s;}
+
+@keyframes floatMagic{
+
+0%{
+transform:translateY(10px) scale(0.4);
+opacity:0;
+}
+
+50%{
+opacity:1;
+transform:translateY(-10px) scale(1.3);
+}
+
+100%{
+transform:translateY(-25px) scale(0);
+opacity:0;
+}
+
+}
+
+/* modo oscuro */
+
+@media (prefers-color-scheme: dark){
+
+.glow{
+
+filter:
+drop-shadow(0 0 10px rgba(255,230,170,0.8))
+drop-shadow(0 0 20px rgba(255,230,170,0.7));
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="firma">
+
+<img src="firma.png" alt="Firma Lily One Travel">
+
+<div class="glow"></div>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+
+</div>
+
+</body>
+</html>
