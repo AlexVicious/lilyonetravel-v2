@@ -8,63 +8,56 @@
 
 body{
 margin:0;
+padding:0;
 background:transparent;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .firma-container{
 position:relative;
-display:inline-block;
-width:600px;
+width:650px;
 max-width:100%;
 }
 
-/* Imagen de firma */
-
 .firma-img{
 width:100%;
+height:auto;
 display:block;
-position:relative;
 z-index:2;
+position:relative;
 }
 
 /* brillo que recorre el logo */
 
-.shine{
+.glow-sweep{
 position:absolute;
 top:0;
 left:-100%;
-width:60%;
+width:50%;
 height:100%;
 background:linear-gradient(
 120deg,
 transparent,
-rgba(255,255,255,0.8),
+rgba(255,255,255,0.7),
 transparent
 );
-animation:shine 6s infinite;
+filter:blur(8px);
+animation:sweep 6s infinite;
 z-index:3;
-mix-blend-mode:screen;
+pointer-events:none;
 }
 
-@keyframes shine{
-
-0%{
-left:-120%;
-}
-
-40%{
-left:120%;
-}
-
-100%{
-left:120%;
-}
-
+@keyframes sweep{
+0%{left:-100%;}
+50%{left:120%;}
+100%{left:120%;}
 }
 
 /* canvas partículas */
 
-.magic{
+canvas{
 position:absolute;
 top:0;
 left:0;
@@ -75,9 +68,7 @@ z-index:4;
 }
 
 </style>
-
 </head>
-
 
 <body>
 
@@ -85,124 +76,90 @@ z-index:4;
 
 <img src="firma.png" class="firma-img">
 
-<div class="shine"></div>
+<div class="glow-sweep"></div>
 
-<canvas class="magic" id="magicCanvas"></canvas>
+<canvas id="magic"></canvas>
 
 </div>
 
-
-
 <script>
 
-const canvas=document.getElementById("magicCanvas")
-const ctx=canvas.getContext("2d")
+const canvas = document.getElementById("magic")
+const ctx = canvas.getContext("2d")
 
 let W
 let H
 
 function resize(){
-
-W=canvas.width=canvas.offsetWidth
-H=canvas.height=canvas.offsetHeight
-
+W = canvas.width = canvas.offsetWidth
+H = canvas.height = canvas.offsetHeight
 }
 
 resize()
 
 window.addEventListener("resize",resize)
 
+const particles=[]
 
+function rand(a,b){
+return Math.random()*(b-a)+a
+}
 
-const stars=[]
-
-
+/* estrellas tipo tinker bell */
 
 function createStar(){
-
-stars.push({
-
-x:Math.random()*W,
-y:Math.random()*H,
-size:Math.random()*2+1,
-life:Math.random()*80+40,
-vx:(Math.random()-0.5)*0.3,
-vy:(Math.random()-0.5)*0.3
-
+particles.push({
+x:rand(W*0.05,W*0.35),
+y:rand(H*0.15,H*0.45),
+vx:rand(0.1,0.4),
+vy:rand(-0.05,0.05),
+life:rand(80,140),
+size:rand(1,2.5)
 })
-
 }
 
+/* polvo mágico sombrero */
 
-
-function drawStar(x,y,size){
-
-ctx.beginPath()
-
-ctx.fillStyle="rgba(255,255,200,0.9)"
-
-ctx.arc(x,y,size,0,Math.PI*2)
-
-ctx.fill()
-
+function createMagicDust(){
+particles.push({
+x:rand(W*0.18,W*0.28),
+y:rand(H*0.05,H*0.15),
+vx:rand(0.1,0.3),
+vy:rand(-0.2,-0.05),
+life:rand(60,120),
+size:rand(1,2)
+})
 }
 
-
-
-function animate(){
+function update(){
 
 ctx.clearRect(0,0,W,H)
 
-if(stars.length<30){
-createStar()
-}
+if(Math.random()<0.2)createStar()
+if(Math.random()<0.12)createMagicDust()
 
-stars.forEach((s,i)=>{
+particles.forEach((p,i)=>{
 
-s.x+=s.vx
-s.y+=s.vy
-s.life--
+p.x+=p.vx
+p.y+=p.vy
+p.life--
 
-drawStar(s.x,s.y,s.size)
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
+ctx.fillStyle="rgba(255,215,120,0.9)"
+ctx.fill()
 
-if(s.life<=0){
-
-stars.splice(i,1)
-
-}
+if(p.life<=0)particles.splice(i,1)
 
 })
 
-requestAnimationFrame(animate)
+requestAnimationFrame(update)
 
 }
 
-animate()
-
-
-
-/* polvo mágico del sombrero */
-
-function createMagicTrail(){
-
-stars.push({
-
-x:120 + Math.random()*40,
-y:40 + Math.random()*20,
-size:Math.random()*3+1,
-life:80,
-vx:Math.random()*0.5,
-vy:-Math.random()*0.2
-
-})
-
-}
-
-setInterval(createMagicTrail,200)
+update()
 
 </script>
-
-
 
 </body>
 </html>
