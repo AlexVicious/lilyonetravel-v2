@@ -29,20 +29,17 @@ upgrade-insecure-requests;
 
 <style>
 
-/* LOGO ANIMACIÓN PREMIUM */
-
+/* LOGO */
 .logo{
 height:42px;
 transition:transform .6s ease, filter .6s ease;
 }
-
 .logo:hover{
 transform:scale(1.1) rotate(-5deg);
 filter:drop-shadow(0 0 10px gold);
 }
 
-/* REDES CENTRADAS */
-
+/* NAVBAR */
 .navbar{
 display:flex;
 align-items:center;
@@ -51,31 +48,102 @@ padding:12px 30px;
 background:linear-gradient(90deg,#0b0626,#1a0d3f);
 }
 
-/* BOTONES FOOTER PREMIUM */
+/* REDES */
+.social-row{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:30px;
+margin-top:30px;
+flex-wrap:wrap;
+}
 
+/* BOTÓN */
+.social-btn{
+width:80px;
+height:80px;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#111;
+cursor:pointer;
+transition:all .25s ease;
+position:relative;
+overflow:hidden;
+animation:pulse 2.2s infinite;
+}
+
+/* ICONO PNG */
+.social-btn img{
+width:42px;
+height:42px;
+object-fit:contain;
+z-index:2;
+}
+
+/* LATIDO */
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.08)}
+100%{transform:scale(1)}
+}
+
+/* 🔥 GLOW POR RED */
+
+.social-btn[data-net="tiktok"]:hover{
+box-shadow:0 0 20px #25F4EE, 0 0 40px #FE2C55;
+}
+
+.social-btn[data-net="instagram"]:hover{
+box-shadow:0 0 20px #feda75,0 0 40px #d62976;
+}
+
+.social-btn[data-net="facebook"]:hover{
+box-shadow:0 0 20px #1877f2,0 0 40px #1877f2;
+}
+
+/* CLICK */
+.social-btn:active{
+transform:scale(0.9);
+}
+
+/* PARTÍCULAS */
+.particle{
+position:absolute;
+width:6px;
+height:6px;
+border-radius:50%;
+pointer-events:none;
+animation:explode 600ms ease-out forwards;
+}
+
+@keyframes explode{
+to{
+transform:translate(var(--x),var(--y)) scale(0);
+opacity:0;
+}
+}
+
+/* WHATSAPP */
 .whatsapp-float{
 animation:floatBtn 4s ease-in-out infinite;
 }
 
 @keyframes floatBtn{
-
 0%{transform:translateY(0)}
 50%{transform:translateY(-6px)}
 100%{transform:translateY(0)}
-
 }
 
-/* ANIMACIÓN DESTINOS */
-
+/* DESTINOS */
 .card{
 transition:transform .35s ease, box-shadow .35s ease;
 }
-
 .card:active{
 transform:scale(0.96);
 box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
-
 .card:hover{
 transform:translateY(-6px) scale(1.03);
 }
@@ -87,67 +155,49 @@ transform:translateY(-6px) scale(1.03);
 <body>
 
 <canvas id="magicParticles"></canvas>
-
 <div id="pageTransition"></div>
 
-<header class="navbar">
-
-<nav class="social-nav">
-
-<a class="social-btn tiktok" href="https://www.tiktok.com/@lilyonetravele" target="_blank">
-<svg class="social-icon" viewBox="0 0 24 24">
-<path d="M16.6 3c.4 2.7 2.1 4.3 4.4 4.6v3.1c-1.7.1-3.3-.4-4.6-1.4v6.2c0 4.2-3.4 7.5-7.5 7.5S1.4 19.7 1.4 15.5c0-4.3 3.5-7.6 7.8-7.5v3.2c-2.4-.1-4.4 1.8-4.6 4.2-.2 2.6 1.9 4.8 4.5 4.8 2.4 0 4.4-2 4.4-4.4V3h3.1z"/>
-</svg>
-</a>
-
-<a class="social-btn instagram" href="https://www.instagram.com/lilyonetravele" target="_blank">
-<svg class="social-icon" viewBox="0 0 24 24">
-<path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 
-0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7z"/>
-</svg>
-</a>
-
-<a class="social-btn facebook" href="https://www.facebook.com/share/1Zi1Bvmwpd/?mibextid=wwXIfr" target="_blank">
-<svg class="social-icon" viewBox="0 0 24 24">
-<path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 
-1.5-3.8 3.7-3.8 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 
-0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 
-10 0 0 0 22 12z"/>
-</svg>
-</a>
-
-</nav>
-
-</header>
+<header class="navbar"></header>
 
 <main>
 
 <section class="hero">
 
 <h1 class="main-title">Lily One Travel</h1>
-
 <p class="subtitle">✨ Your Dream is yet to come ✨</p>
 
 <div class="video-stage">
 <div class="video-frame">
-
 <video class="hero-video"
 src="LilyComercial.m4v"
 autoplay muted loop playsinline></video>
-
 </div>
+</div>
+
+<!-- REDES -->
+
+<div class="social-row">
+
+<a class="social-btn" data-net="tiktok" href="https://www.tiktok.com/@lilyonetravele" target="_blank">
+<img src="tiktok.png" alt="TikTok">
+</a>
+
+<a class="social-btn" data-net="instagram" href="https://www.instagram.com/lilyonetravele" target="_blank">
+<img src="instagram.png" alt="Instagram">
+</a>
+
+<a class="social-btn" data-net="facebook" href="https://www.facebook.com/share/1Zi1Bvmwpd/?mibextid=wwXIfr" target="_blank">
+<img src="facebook.png" alt="Facebook">
+</a>
+
 </div>
 
 <div class="cta-row">
-
 <a class="btn-agentes"
 href="https://wa.me/525568817319"
 target="_blank">
-
 Únete a mi equipo de agentes
-
 </a>
-
 </div>
 
 </section>
@@ -160,21 +210,10 @@ target="_blank">
 
 <div class="grid">
 
-<button class="card disney nav-link" data-link="cotizacion.html">
-Disney
-</button>
-
-<button class="card universal nav-link" data-link="cotizacion.html">
-Universal
-</button>
-
-<button class="card cruceros nav-link" data-link="cotizacion.html">
-Cruceros
-</button>
-
-<button class="card playa nav-link" data-link="cotizacion.html">
-Playa
-</button>
+<button class="card disney nav-link" data-link="cotizacion.html">Disney</button>
+<button class="card universal nav-link" data-link="cotizacion.html">Universal</button>
+<button class="card cruceros nav-link" data-link="cotizacion.html">Cruceros</button>
+<button class="card playa nav-link" data-link="cotizacion.html">Playa</button>
 
 </div>
 
@@ -185,16 +224,60 @@ Playa
 <a class="whatsapp-float"
 href="https://wa.me/525568817319"
 target="_blank">
-
 💬 WhatsApp
-
 </a>
 
 <footer>
 © 2026 Lily One Travel
 </footer>
 
+<audio id="clickSound" src="click.mp3" preload="auto"></audio>
+
 <script src="script.js"></script>
+
+<script>
+
+const sound = document.getElementById('clickSound');
+
+document.querySelectorAll('.social-btn').forEach(btn=>{
+
+btn.addEventListener('click', e=>{
+
+/* 🔊 SONIDO */
+sound.currentTime = 0;
+sound.play().catch(()=>{});
+
+/* 📳 VIBRACIÓN */
+if(navigator.vibrate){
+navigator.vibrate(30);
+}
+
+/* 💥 PARTÍCULAS */
+
+for(let i=0;i<10;i++){
+
+const particle = document.createElement("span");
+particle.className = "particle";
+
+const angle = Math.random()*2*Math.PI;
+const radius = 50;
+
+particle.style.setProperty("--x", `${Math.cos(angle)*radius}px`);
+particle.style.setProperty("--y", `${Math.sin(angle)*radius}px`);
+
+particle.style.background = "white";
+
+btn.appendChild(particle);
+
+setTimeout(()=>particle.remove(),600);
+
+}
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
